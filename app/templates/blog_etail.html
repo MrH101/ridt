@@ -1,0 +1,24 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+  <h2>{{ blog.title }}</h2>
+  <p>{{ blog.content }}</p>
+
+  {% if not comments %}
+    <p>There are no comments yet.</p>
+  {% endif %}
+
+  {% for comment in comments %}
+    <p>{{ comment.content }}</p>
+    <small>Posted by {{ comment.created_by }} on {{ comment.create_timestamp }}</small>
+  {% endfor %}
+
+  {% if user.is_authenticated %}
+    <form method="post" action="{% url 'app:blog_detail' pk=blog.pk %}">
+      {% csrf_token %}
+      {{ comment_form.as_p }}
+      <button type="submit">Post</button>
+    </form>
+  {% endif %}
+
+{% endblock content %}

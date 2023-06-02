@@ -1,0 +1,10 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+    <h1>{{ blog.title }}</h1>
+    <p>{{ blog.content }}</p>
+    <p>
+        Created by {{ blog.created_by.username }} - {{ blog.create_timestamp }}<br>
+        Last updated on {{ blog.update_timestamp }}
+    </p>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+    <h1>Comment List for {{ blog.title }}</h1>
+    <ul>
+        {% for comment in comments %}
+            <li>{{ comment.content }} - by {{ comment.author.username }} - {{ comment.timestamp }}</li>
+        {% empty %}
+            <li>No comments yet</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

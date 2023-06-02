@@ -1,0 +1,16 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+    <h1>Blog List</h1>
+    <ul>
+        {% for blog in blogs %}
+            <li>
+                <a href="{% url 'app:blog_detail' blog.pk %}">{{ blog.title }}</a>
+                - by {{ blog.created_by.username }}
+                - {{ blog.create_timestamp }}
+            </li>
+        {% empty %}
+            <li>No blogs found</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
